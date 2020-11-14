@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
+import kotlin.random.Random
 
 class DashboardActivity : AppCompatActivity() {
     private var userId: String? = null
@@ -72,7 +73,7 @@ class DashboardActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
         }
         database.addValueEventListener(getImage)

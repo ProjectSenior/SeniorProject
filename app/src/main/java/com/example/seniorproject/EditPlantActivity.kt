@@ -13,15 +13,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 
 
 class EditPlantActivity : AppCompatActivity() {
     private var userId: String? = null
     private lateinit var auth: FirebaseAuth
-    //lateinit var photo :ImageView
     lateinit var filepath : Uri
     var downloadUri: String = ""
 
@@ -31,18 +35,44 @@ class EditPlantActivity : AppCompatActivity() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         userId = currentUser?.getUid()
         auth = FirebaseAuth.getInstance()
-
+        var database = FirebaseDatabase.getInstance().reference.child("Plant").child(userId.toString())
+        var getDatabase = FirebaseDatabase.getInstance().getReference("Plant").child(userId.toString())
         var chooseFile = findViewById<Button>(R.id.chooseBtn)
         var upload = findViewById<Button>(R.id.uploadbtn)
         var photo = findViewById<ImageView>(R.id.editimageView)
+        var editNamePlant= findViewById<EditText>(R.id.editNameplant)
+        var editDateStart = findViewById<EditText>(R.id.editDateStart)
+        var editAnno = findViewById<EditText>(R.id.editAnnotation)
+        var namePlant = editNamePlant.text.toString()
+        var dateStart = editDateStart.text.toString()
+        var anno = editAnno.text.toString()
+        var getImage = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var getdata =snapshot.child("imageUrl").value
+                Picasso.get().load(getdata.toString().toUri()).into(photo)
+                var getdataName = snapshot.child("plantName").value
+                var getdataAnno = snapshot.child("anno").value
+                var getdataUri = snapshot.child("imageUrl").value
+                var getdataDate = snapshot.child("date").value
+                editNamePlant.setText(getdataName.toString())
+                editDateStart.setText(getdataDate.toString())
+                editAnno.setText(getdataAnno.toString())
+                
+            }
 
+            override fun onCancelled(error: DatabaseError) {
 
+            }
+        }
+        database.addValueEventListener(getImage)
 
         chooseFile.setOnClickListener {
             filechooser()
         }
         upload.setOnClickListener {
             uploadFile()
+            val intent = Intent (this,PlantActivity :: class.java)
+            startActivity(intent)
         }
 
         //go back to dashboard
@@ -54,7 +84,6 @@ class EditPlantActivity : AppCompatActivity() {
         }
 
     }
-    var EXTRA_URI  = ""
     private fun uploadFile() {
         var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
         var editNamePlant= findViewById<EditText>(R.id.editNameplant)
@@ -105,6 +134,7 @@ class EditPlantActivity : AppCompatActivity() {
                                     namePlant,
                                     dateStart,
                                     anno,downloadUri))
+
                 } else {
                     // Handle failures
                     // ...
