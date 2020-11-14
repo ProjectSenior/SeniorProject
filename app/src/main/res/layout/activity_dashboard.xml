@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteSmoke"
+    tools:context=".DashboardActivity">
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="LOGOUT"
+        android:textColor="#0B0B0B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="375dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/roundsquare_bg"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/btnProfile"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/roundminisquare_bg"
+        android:translationZ="20dp"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+    <View
+        android:id="@+id/btnInfo"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/roundminisquare_bg"
+        android:translationZ="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/btnProfile" />
+
+    <View
+        android:id="@+id/btnResume"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/roundminisquare_bg"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnWatering"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toEndOf="@+id/btnProfile"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+    <View
+        android:id="@+id/btnScore"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/roundminisquare_bg"
+        android:translationZ="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/btnExit"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toEndOf="@+id/btnProfile"
+        app:layout_constraintTop_toBottomOf="@+id/btnResume" />
+
+    <View
+        android:id="@+id/btnWatering"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/roundminisquare_bg"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+    <View
+        android:id="@+id/btnExit"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/roundminisquare_bg"
+        android:translationZ="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintTop_toBottomOf="@+id/btnWatering" />
+
+    <ImageView
+        android:id="@+id/Info"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnInfo"
+        app:layout_constraintStart_toStartOf="@+id/btnInfo"
+        app:layout_constraintTop_toTopOf="@+id/btnInfo"
+        app:srcCompat="@drawable/ic_info" />
+
+    <ImageView
+        android:id="@+id/Watering"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnWatering"
+        app:layout_constraintStart_toStartOf="@+id/btnWatering"
+        app:layout_constraintTop_toTopOf="@+id/btnWatering"
+        app:srcCompat="@drawable/ic_watering_can" />
+
+    <ImageView
+        android:id="@+id/Score"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnScore"
+        app:layout_constraintStart_toStartOf="@+id/btnScore"
+        app:layout_constraintTop_toTopOf="@+id/btnScore"
+        app:srcCompat="@drawable/ic_score" />
+
+    <ImageView
+        android:id="@+id/Resume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnResume"
+        app:layout_constraintStart_toStartOf="@+id/btnResume"
+        app:layout_constraintTop_toTopOf="@+id/btnResume"
+        app:srcCompat="@drawable/ic_resume" />
+
+    <ImageView
+        android:id="@+id/Exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnExit"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="@+id/btnExit"
+        app:layout_constraintTop_toTopOf="@+id/btnExit"
+        app:srcCompat="@drawable/ic_exit" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="53dp"
+        android:layout_height="35dp"
+        android:text="ข้อมูลการดูแลต้นไม้"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnProfile"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/btnProfile"
+        app:layout_constraintTop_toBottomOf="@+id/Info" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="28dp"
+        android:layout_height="16dp"
+        android:text="รดน้ำ"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnWatering"
+        app:layout_constraintStart_toStartOf="@+id/btnWatering"
+        app:layout_constraintTop_toBottomOf="@+id/Watering" />
+
+    <TextView
+        android:layout_width="57dp"
+        android:layout_height="16dp"
+        android:text="สกอร์บอร์ด"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnScore"
+        app:layout_constraintStart_toStartOf="@+id/btnScore"
+        app:layout_constraintTop_toBottomOf="@+id/Score" />
+
+    <TextView
+        android:layout_width="71dp"
+        android:layout_height="15dp"
+        android:text="แก้ไขโปรไฟล์"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnScore"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/btnScore"
+        app:layout_constraintTop_toBottomOf="@+id/Resume" />
+
+    <TextView
+        android:layout_width="48dp"
+        android:layout_height="14dp"
+        android:text="ล็อกเอาท์"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnExit"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="@+id/btnExit"
+        app:layout_constraintTop_toBottomOf="@+id/Exit" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:background="#004B41"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="หน้าหลัก"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnProfile"
+        app:layout_constraintStart_toStartOf="@+id/btnProfile"
+        app:layout_constraintTop_toTopOf="@+id/btnProfile"
+        app:srcCompat="@drawable/ic_user_profiles" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="โปรไฟล์"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:translationZ="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnProfile"
+        app:layout_constraintStart_toStartOf="@+id/btnProfile"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+    <View
+        android:id="@+id/view9"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@drawable/ic_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
