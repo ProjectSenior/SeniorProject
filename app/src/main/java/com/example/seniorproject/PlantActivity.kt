@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,13 @@ class PlantActivity : AppCompatActivity() {
         var infoAnnotationText = findViewById<TextView>(R.id.infoanno)
         //var storageRef = FirebaseStorage.getInstance("images/").reference
 
+
+        //go back to dashboard
+        var btnBackToDashboard = findViewById<View>(R.id.backPlant)
+        btnBackToDashboard.setOnClickListener {
+            val intent = Intent(this,DashboardActivity :: class.java)
+            startActivity(intent)
+        }
 
 
         var getdataImage = object :ValueEventListener{
@@ -133,6 +141,8 @@ class PlantActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
 
 }

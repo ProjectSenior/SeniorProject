@@ -8,6 +8,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -46,6 +47,14 @@ class EditPlantActivity : AppCompatActivity() {
         }
         upload.setOnClickListener {
             uploadFile()
+        }
+
+        //go back to dashboard
+        var btnBackToDashboard = findViewById<View>(R.id.backEditprofile)
+        btnBackToDashboard.setOnClickListener {
+
+            val intent = Intent(this,DashboardActivity :: class.java)
+            startActivity(intent)
         }
 
     }
