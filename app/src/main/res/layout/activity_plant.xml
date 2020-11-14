@@ -20,11 +20,13 @@
 
     <TextView
         android:id="@+id/plantnameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="221dp"
+        android:layout_height="42dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/kanit_light"
+        android:paddingLeft="80sp"
         android:text="name"
-        android:textSize="18sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,14 +36,13 @@
         android:id="@+id/dateplantview"
         android:layout_width="169dp"
         android:layout_height="87dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/roundsquare_bg"
         android:elevation="2dp"
         android:padding="16dp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/explainView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plantnameText" />
 
@@ -52,7 +53,6 @@
         android:background="@color/Green"
         android:padding="16dp"
         app:cornerRadius="100dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,23 +69,6 @@
         app:layout_constraintStart_toStartOf="@+id/view4"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow" />
-
-    <View
-        android:id="@+id/datestartview"
-        android:layout_width="169dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/roundsquare_bg"
-        android:elevation="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/explainView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
-        app:layout_constraintStart_toEndOf="@+id/dateplantview"
-        app:layout_constraintTop_toBottomOf="@+id/plantnameText" />
 
     <View
         android:id="@+id/explainView"
@@ -114,6 +97,7 @@
         android:text="โปรไฟล์"
         android:textColor="@color/white"
         android:textSize="32sp"
+        android:fontFamily="@font/kanit_light"
         app:layout_constraintBottom_toBottomOf="@+id/headerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +111,7 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:translationZ="6dp"
+        android:fontFamily="@font/kanit_light"
         app:layout_constraintBottom_toBottomOf="@+id/dateplantview"
         app:layout_constraintEnd_toEndOf="@+id/dateplantview"
         app:layout_constraintHorizontal_bias="0.51"
@@ -145,23 +130,9 @@
         android:textColor="@color/black"
         android:textSize="24sp"
         android:translationZ="6dp"
+        android:fontFamily="@font/kanit_light"
         app:layout_constraintStart_toStartOf="@+id/explainView"
         app:layout_constraintTop_toTopOf="@+id/explainView" />
-
-    <TextView
-        android:id="@+id/datestart2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="วันที่เริ่มใช้แอพ"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:translationZ="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/datestartview"
-        app:layout_constraintEnd_toEndOf="@+id/datestartview"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="@+id/datestartview"
-        app:layout_constraintTop_toTopOf="@+id/datestartview"
-        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/dateofplant"
@@ -170,6 +141,7 @@
         android:layout_marginTop="50dp"
         android:text="ดึงไฟเบส"
         android:translationZ="6dp"
+        android:fontFamily="@font/kanit_light"
         app:layout_constraintEnd_toEndOf="@+id/dateplantview"
         app:layout_constraintStart_toStartOf="@+id/dateplantview"
         app:layout_constraintTop_toTopOf="@+id/dateplantview" />
@@ -181,21 +153,11 @@
         android:layout_marginTop="56dp"
         android:text="ดึงไฟเบส"
         android:translationZ="6dp"
+        android:fontFamily="@font/kanit_light"
         app:layout_constraintEnd_toEndOf="@+id/explainView"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="@+id/explainView"
         app:layout_constraintTop_toTopOf="@+id/explainView" />
-
-    <TextView
-        android:id="@+id/dateofstart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="ดึงไฟเบส"
-        android:translationZ="6dp"
-        app:layout_constraintEnd_toEndOf="@+id/datestartview"
-        app:layout_constraintStart_toStartOf="@+id/datestartview"
-        app:layout_constraintTop_toTopOf="@+id/datestartview" />
 
     <View
         android:id="@+id/view13"

@@ -34,7 +34,6 @@ class PlantActivity : AppCompatActivity() {
         var editImage = findViewById<ImageView>(R.id.editimageView)
         var namePlant = findViewById<TextView>(R.id.plantnameText)
         var dateofPlant = findViewById<TextView>(R.id.dateofplant)
-        var dateOfStart = findViewById<TextView>(R.id.dateofstart)
         var infoAnnotationText = findViewById<TextView>(R.id.infoanno)
         //var storageRef = FirebaseStorage.getInstance("images/").reference
 
@@ -96,17 +95,6 @@ class PlantActivity : AppCompatActivity() {
         database.addValueEventListener(getdataDateplant)   //เรียกการใช้งาน
         //database.addListenerForSingleValueEvent(getdataDateplant)
 
-        var getdataDateApp = object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var datePlantApp = snapshot.child("dateApp").value.toString()
-                dateOfStart.setText(datePlantApp)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        }
-        database.addValueEventListener(getdataDateApp)   //เรียกการใช้งาน
 
         var getdataInfoAnnotation = object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {

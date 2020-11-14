@@ -7,11 +7,9 @@ class PlantInfo {
     var moisture = 0
     var date = ""
     var status = 0
-    var dateApp = ""
     var anno = ""
     var imageUrl = ""
-    constructor( plantName: String,  date: String,dateApp: String,anno: String ,imageUrl: String) {
-        this.dateApp = dateApp
+    constructor( plantName: String,  date: String,anno: String ,imageUrl: String) {
         this.plantName = plantName
         this.anno=anno
         this.date = date

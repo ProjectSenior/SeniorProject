@@ -32,15 +32,11 @@ class EditPlantActivity : AppCompatActivity() {
         userId = currentUser?.getUid()
         auth = FirebaseAuth.getInstance()
 
-        var saveInfoBtn  = findViewById<Button>(R.id.saveBtn)
         var chooseFile = findViewById<Button>(R.id.chooseBtn)
         var upload = findViewById<Button>(R.id.uploadbtn)
         var photo = findViewById<ImageView>(R.id.editimageView)
 
 
-        saveInfoBtn.setOnClickListener {
-            //nope
-        }
 
         chooseFile.setOnClickListener {
             filechooser()
@@ -63,11 +59,9 @@ class EditPlantActivity : AppCompatActivity() {
         var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
         var editNamePlant= findViewById<EditText>(R.id.editNameplant)
         var editDateStart = findViewById<EditText>(R.id.editDateStart)
-        var editDateStartApp = findViewById<EditText>(R.id.editDatestartApp)
         var editAnno = findViewById<EditText>(R.id.editAnnotation)
         var namePlant = editNamePlant.text.toString()
         var dateStart = editDateStart.text.toString()
-        var dateStartApp = editDateStartApp.text.toString()
         var anno = editAnno.text.toString()
         if (filepath!=null){
             var pd = ProgressDialog(this)
@@ -110,7 +104,6 @@ class EditPlantActivity : AppCompatActivity() {
                             PlantInfo(
                                     namePlant,
                                     dateStart,
-                                    dateStartApp,
                                     anno,downloadUri))
                 } else {
                     // Handle failures
