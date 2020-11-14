@@ -13,17 +13,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 
 
 class EditPlantActivity : AppCompatActivity() {
     private var userId: String? = null
     private lateinit var auth: FirebaseAuth
-    //lateinit var photo :ImageView
     lateinit var filepath : Uri
     var downloadUri: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +41,27 @@ class EditPlantActivity : AppCompatActivity() {
         var upload = findViewById<Button>(R.id.uploadbtn)
         var photo = findViewById<ImageView>(R.id.editimageView)
 
+        var database = FirebaseDatabase.getInstance().reference.child("Plant").child(userId.toString())
+        //getImage
+        var getImage = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var getdata =snapshot.child("imageUrl").value
+                Picasso.get().load(getdata.toString().toUri()).into(photo)
+            }
 
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        database.addValueEventListener(getImage)
 
         chooseFile.setOnClickListener {
             filechooser()
         }
         upload.setOnClickListener {
             uploadFile()
+            val intent = Intent(this,PlantActivity :: class.java)
+            startActivity(intent)
         }
 
         //go back to dashboard
@@ -54,7 +73,7 @@ class EditPlantActivity : AppCompatActivity() {
         }
 
     }
-    var EXTRA_URI  = ""
+
     private fun uploadFile() {
         var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
         var editNamePlant= findViewById<EditText>(R.id.editNameplant)
@@ -63,6 +82,7 @@ class EditPlantActivity : AppCompatActivity() {
         var namePlant = editNamePlant.text.toString()
         var dateStart = editDateStart.text.toString()
         var anno = editAnno.text.toString()
+
         if (filepath!=null){
             var pd = ProgressDialog(this)
             pd.setTitle("Uploading")
@@ -71,7 +91,7 @@ class EditPlantActivity : AppCompatActivity() {
             imageRef.putFile(filepath)
                 .addOnSuccessListener { p0 ->
                     pd.dismiss()
-                    Toast.makeText(applicationContext, "File Upload", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Upload Successfully", Toast.LENGTH_LONG).show()
                 }
                 .addOnFailureListener{ p0 ->
                     pd.dismiss()
@@ -112,6 +132,7 @@ class EditPlantActivity : AppCompatActivity() {
             }
 
         }
+
     }
 
     private fun filechooser() {
