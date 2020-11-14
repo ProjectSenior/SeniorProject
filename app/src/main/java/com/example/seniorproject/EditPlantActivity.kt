@@ -52,6 +52,14 @@ class EditPlantActivity : AppCompatActivity() {
     var EXTRA_URI  = ""
     private fun uploadFile() {
         var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
+        var editNamePlant= findViewById<EditText>(R.id.editNameplant)
+        var editDateStart = findViewById<EditText>(R.id.editDateStart)
+        var editDateStartApp = findViewById<EditText>(R.id.editDatestartApp)
+        var editAnno = findViewById<EditText>(R.id.editAnnotation)
+        var namePlant = editNamePlant.text.toString()
+        var dateStart = editDateStart.text.toString()
+        var dateStartApp = editDateStartApp.text.toString()
+        var anno = editAnno.text.toString()
         if (filepath!=null){
             var pd = ProgressDialog(this)
             pd.setTitle("Uploading")
@@ -86,36 +94,20 @@ class EditPlantActivity : AppCompatActivity() {
             }.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     downloadUri = task.result.toString()
+                    println("Download = this " + downloadUri)
                     println(downloadUri)
                     println("///////")
+                    database.child(userId.toString()).setValue(
+                            PlantInfo(
+                                    namePlant,
+                                    dateStart,
+                                    dateStartApp,
+                                    anno,downloadUri))
                 } else {
                     // Handle failures
                     // ...
                 }
             }
-
-
-            var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
-            var editNamePlant= findViewById<EditText>(R.id.editNameplant)
-            var editDateStart = findViewById<EditText>(R.id.editDateStart)
-            var editDateStartApp = findViewById<EditText>(R.id.editDatestartApp)
-            var editAnno = findViewById<EditText>(R.id.editAnnotation)
-            var namePlant = editNamePlant.text.toString()
-            var dateStart = editDateStart.text.toString()
-            var dateStartApp = editDateStartApp.text.toString()
-            var anno = editAnno.text.toString()
-            var imageUrl = downloadUri
-            //var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
-
-            database.child(userId.toString()).setValue(
-                PlantInfo(
-                    namePlant,
-                    dateStart,
-                    dateStartApp,
-                    anno,imageUrl
-                )
-            )
-
 
         }
     }
