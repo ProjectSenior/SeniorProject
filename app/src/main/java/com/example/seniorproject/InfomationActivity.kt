@@ -13,7 +13,7 @@ class InfomationActivity : AppCompatActivity() {
         //go back to dashboard
         var btnBackToDashboard = findViewById<View>(R.id.backInfomation)
         btnBackToDashboard.setOnClickListener {
-            val intent = Intent(this,DashboardActivity :: class.java)
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
     }

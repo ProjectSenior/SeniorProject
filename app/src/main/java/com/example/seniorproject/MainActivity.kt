@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
 
-        var btnLogin=findViewById<Button>(R.id.btnLogin)
+        var btnLogin = findViewById<Button>(R.id.btnLogin)
         var signup = findViewById<TextView>(R.id.signUp)
 
         btnLogin.setOnClickListener {
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         signup.setOnClickListener {
-            val intent = Intent(this,RegisterActivity :: class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         updateUI(currentUser)
     }
 
-    private fun updateUI(currentUser : FirebaseUser?){
+    private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
 //            if(currentUser.isEmailVerified) {
             val intent = Intent(this, DashboardActivity::class.java)
@@ -57,20 +57,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun doLogin(){
-        var inputEmail=findViewById<TextView>(R.id.inputEmail)
-        var inputPassword=findViewById<TextView>(R.id.inputPassword)
-        if(inputEmail.text.toString().isEmpty()){
+    private fun doLogin() {
+        var inputEmail = findViewById<TextView>(R.id.inputEmail)
+        var inputPassword = findViewById<TextView>(R.id.inputPassword)
+        if (inputEmail.text.toString().isEmpty()) {
             inputEmail.error = "Please enter email"
             inputEmail.requestFocus()
             return
         }
-        if(!Patterns.EMAIL_ADDRESS.matcher((inputEmail.text.toString())).matches()){
-            inputEmail.error= "Please enter valid email"
+        if (!Patterns.EMAIL_ADDRESS.matcher((inputEmail.text.toString())).matches()) {
+            inputEmail.error = "Please enter valid email"
             return
         }
-        if(inputPassword.text.toString().isEmpty()){
-            inputPassword.error= "Please enter password"
+        if (inputPassword.text.toString().isEmpty()) {
+            inputPassword.error = "Please enter password"
             inputPassword.requestFocus()
             return
         }
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val user = auth.currentUser
                         updateUI(user)
-                        Log.e("Action","login success")
+                        Log.e("Action", "login success")
                     } else {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(baseContext, "Login failed.",
@@ -93,9 +93,6 @@ class MainActivity : AppCompatActivity() {
                     // ...
                 }
     }
-
-
-
 
 
 }
