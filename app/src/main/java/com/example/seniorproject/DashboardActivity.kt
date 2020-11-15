@@ -56,6 +56,12 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //go to Scoreboard
+        var btnScore = findViewById<View>(R.id.btnScore)
+        btnScore.setOnClickListener {
+            val intent = Intent(this,ScoreboardActivity :: class.java)
+            startActivity(intent)
+        }
         //Logout
         var btnExit = findViewById<View>(R.id.btnExit)
         btnExit.setOnClickListener {

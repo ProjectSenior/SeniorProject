@@ -65,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
                     val userauth = auth.currentUser
                     val userUid = auth.uid
                     datebase.child("User").child(userUid.toString())
-                        .setValue(User(registerUsername.text.toString(),registerEmail.text.toString(),registerPassword.text.toString()))
+                        .setValue(User(registerUsername.text.toString(),registerEmail.text.toString(),registerPassword.text.toString(),0))
                     // user!!.sendEmailVerification()
                     // .addOnCompleteListener { task ->
                     // if (task.isSuccessful) {

@@ -67,8 +67,6 @@ class PlantActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var sb = StringBuilder()
                 var name1=snapshot.child("plantName").value.toString()
-
-
                 println("---------------------------")
                 println(name1)
                 namePlant.setText(name1)

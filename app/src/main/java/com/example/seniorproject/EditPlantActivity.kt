@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.net.toFile
 import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -21,13 +22,17 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-
+import java.io.File
+import java.util.*
+import java.util.Date as Date1
+import java.util.Calendar
 
 class EditPlantActivity : AppCompatActivity() {
     private var userId: String? = null
     private lateinit var auth: FirebaseAuth
     lateinit var filepath : Uri
     var downloadUri: String = ""
+    var file : File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,10 +59,22 @@ class EditPlantActivity : AppCompatActivity() {
                 var getdataAnno = snapshot.child("anno").value
                 var getdataUri = snapshot.child("imageUrl").value
                 var getdataDate = snapshot.child("date").value
+                var imageRef = FirebaseStorage.getInstance().reference.child("images/" + userId + ".jpg")
                 editNamePlant.setText(getdataName.toString())
                 editDateStart.setText(getdataDate.toString())
                 editAnno.setText(getdataAnno.toString())
-                
+//                var filepath = getdataUri.toString().toUri().toFile()
+                //filepath = file.toUri()
+                var date = Calendar.getInstance().time.time 
+                var datem = Calendar.getInstance().timeZone
+                println("dateCalen = " +date)
+                println("dateCalenm = " +datem)
+               // println("image= " + filepath)
+                println("name =" + getdataName)
+                println("date =" + getdataDate)
+                println("anno = "+ getdataAnno)
+                println("uri = " + getdataUri )
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -92,6 +109,7 @@ class EditPlantActivity : AppCompatActivity() {
         var namePlant = editNamePlant.text.toString()
         var dateStart = editDateStart.text.toString()
         var anno = editAnno.text.toString()
+
         if (filepath!=null){
             var pd = ProgressDialog(this)
             pd.setTitle("Uploading")
@@ -129,15 +147,15 @@ class EditPlantActivity : AppCompatActivity() {
                     println("Download = this " + downloadUri)
                     println(downloadUri)
                     println("///////")
-                    database.child(userId.toString()).setValue(
-                            PlantInfo(
-                                    namePlant,
-                                    dateStart,
-                                    anno,downloadUri))
+                        database.child(userId.toString()).setValue(
+                                PlantInfo(
+                                        namePlant,
+                                        dateStart,
+                                        anno,downloadUri))
+
 
                 } else {
-                    // Handle failures
-                    // ...
+                    println("ERROR")
                 }
             }
 
@@ -145,6 +163,7 @@ class EditPlantActivity : AppCompatActivity() {
     }
 
     private fun filechooser() {
+
         var i = Intent()
         i.setType("image/*")
         i.setAction(Intent.ACTION_GET_CONTENT)
