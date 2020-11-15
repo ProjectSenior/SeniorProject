@@ -30,7 +30,6 @@ class RegisterActivity : AppCompatActivity() {
         var registerPassword = findViewById<TextView>(R.id.registerPassword)
         var registerUsername = findViewById<TextView>(R.id.registerUsername)
         var datebase = FirebaseDatabase.getInstance().reference
-        var reff = FirebaseDatabase.getInstance().reference.child("Member")
 
 
         if (registerEmail.text.toString().isEmpty()) {
@@ -61,7 +60,7 @@ class RegisterActivity : AppCompatActivity() {
                         val userUid = auth.uid
                         datebase.child("User").child(userUid.toString())
                                 .setValue(User(registerUsername.text.toString(), registerEmail.text.toString(), registerPassword.text.toString(), 0))
-                        datebase.child("Information").child(userUid.toString())
+                        datebase.child("Information").child(userUid.toString()).setValue(IotInfo("","",""))
                         // user!!.sendEmailVerification()
                         // .addOnCompleteListener { task ->
                         // if (task.isSuccessful) {
