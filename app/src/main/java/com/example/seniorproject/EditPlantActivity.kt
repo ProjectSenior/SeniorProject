@@ -30,9 +30,9 @@ import java.util.Calendar
 class EditPlantActivity : AppCompatActivity() {
     private var userId: String? = null
     private lateinit var auth: FirebaseAuth
-    lateinit var filepath : Uri
+    lateinit var filepath: Uri
     var downloadUri: String = ""
-    var file : File? = null
+    var file: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class EditPlantActivity : AppCompatActivity() {
         var chooseFile = findViewById<Button>(R.id.chooseBtn)
         var upload = findViewById<Button>(R.id.uploadbtn)
         var photo = findViewById<ImageView>(R.id.editimageView)
-        var editNamePlant= findViewById<EditText>(R.id.editNameplant)
+        var editNamePlant = findViewById<EditText>(R.id.editNameplant)
         var editDateStart = findViewById<EditText>(R.id.editDateStart)
         var editAnno = findViewById<EditText>(R.id.editAnnotation)
         var namePlant = editNamePlant.text.toString()
@@ -53,28 +53,22 @@ class EditPlantActivity : AppCompatActivity() {
         var anno = editAnno.text.toString()
         var getImage = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                var getdata =snapshot.child("imageUrl").value
+                var getdata = snapshot.child("imageUrl").value
                 Picasso.get().load(getdata.toString().toUri()).into(photo)
                 var getdataName = snapshot.child("plantName").value
                 var getdataAnno = snapshot.child("anno").value
                 var getdataUri = snapshot.child("imageUrl").value
                 var getdataDate = snapshot.child("date").value
                 var imageRef = FirebaseStorage.getInstance().reference.child("images/" + userId + ".jpg")
-                editNamePlant.setText(getdataName.toString())
-                editDateStart.setText(getdataDate.toString())
-                editAnno.setText(getdataAnno.toString())
-//                var filepath = getdataUri.toString().toUri().toFile()
-                //filepath = file.toUri()
-                var date = Calendar.getInstance().time.time 
-                var datem = Calendar.getInstance().timeZone
-                println("dateCalen = " +date)
-                println("dateCalenm = " +datem)
-               // println("image= " + filepath)
-                println("name =" + getdataName)
-                println("date =" + getdataDate)
-                println("anno = "+ getdataAnno)
-                println("uri = " + getdataUri )
-
+                if (getdataName == null && getdataDate == null && getdataAnno == null) {
+                    editNamePlant.setText("")
+                    editDateStart.setText("")
+                    editAnno.setText("")
+                } else {
+                    editNamePlant.setText(getdataName.toString())
+                    editDateStart.setText(getdataDate.toString())
+                    editAnno.setText(getdataAnno.toString())
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -88,7 +82,7 @@ class EditPlantActivity : AppCompatActivity() {
         }
         upload.setOnClickListener {
             uploadFile()
-            val intent = Intent (this,PlantActivity :: class.java)
+            val intent = Intent(this, PlantActivity::class.java)
             startActivity(intent)
         }
 
@@ -96,38 +90,39 @@ class EditPlantActivity : AppCompatActivity() {
         var btnBackToDashboard = findViewById<View>(R.id.backEditprofile)
         btnBackToDashboard.setOnClickListener {
 
-            val intent = Intent(this,DashboardActivity :: class.java)
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
 
     }
+
     private fun uploadFile() {
         var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
-        var editNamePlant= findViewById<EditText>(R.id.editNameplant)
+        var editNamePlant = findViewById<EditText>(R.id.editNameplant)
         var editDateStart = findViewById<EditText>(R.id.editDateStart)
         var editAnno = findViewById<EditText>(R.id.editAnnotation)
         var namePlant = editNamePlant.text.toString()
         var dateStart = editDateStart.text.toString()
         var anno = editAnno.text.toString()
 
-        if (filepath!=null){
+        if (filepath != null) {
             var pd = ProgressDialog(this)
             pd.setTitle("Uploading")
             pd.show()
             var imageRef = FirebaseStorage.getInstance().reference.child("images/" + userId + ".jpg")
             imageRef.putFile(filepath)
-                .addOnSuccessListener { p0 ->
-                    pd.dismiss()
-                    Toast.makeText(applicationContext, "File Upload", Toast.LENGTH_LONG).show()
-                }
-                .addOnFailureListener{ p0 ->
-                    pd.dismiss()
-                    Toast.makeText(applicationContext, p0.message, Toast.LENGTH_LONG).show()
-                }
-                .addOnProgressListener { p0 ->
-                    var progess = (100.0 * p0.bytesTransferred) / p0.totalByteCount
-                    pd.setMessage("Uploaded ${progess.toInt()}%")
-                }
+                    .addOnSuccessListener { p0 ->
+                        pd.dismiss()
+                        Toast.makeText(applicationContext, "File Upload", Toast.LENGTH_LONG).show()
+                    }
+                    .addOnFailureListener { p0 ->
+                        pd.dismiss()
+                        Toast.makeText(applicationContext, p0.message, Toast.LENGTH_LONG).show()
+                    }
+                    .addOnProgressListener { p0 ->
+                        var progess = (100.0 * p0.bytesTransferred) / p0.totalByteCount
+                        pd.setMessage("Uploaded ${progess.toInt()}%")
+                    }
             println("------------------------------")
             println(imageRef.downloadUrl.toString())
 
@@ -147,11 +142,11 @@ class EditPlantActivity : AppCompatActivity() {
                     println("Download = this " + downloadUri)
                     println(downloadUri)
                     println("///////")
-                        database.child(userId.toString()).setValue(
-                                PlantInfo(
-                                        namePlant,
-                                        dateStart,
-                                        anno,downloadUri))
+                    database.child(userId.toString()).setValue(
+                            PlantInfo(
+                                    namePlant,
+                                    dateStart,
+                                    anno, downloadUri))
 
 
                 } else {
@@ -173,7 +168,7 @@ class EditPlantActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         var photo = findViewById<ImageView>(R.id.editimageView)
-        if(requestCode==111 && resultCode == Activity.RESULT_OK && data != null){
+        if (requestCode == 111 && resultCode == Activity.RESULT_OK && data != null) {
             filepath = data.data!!
             var bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filepath)
             photo.setImageBitmap(bitmap)
@@ -181,7 +176,6 @@ class EditPlantActivity : AppCompatActivity() {
             println(filepath.path)
         }
     }
-
 
 
 }

@@ -1,10 +1,8 @@
 package com.example.seniorproject
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
@@ -15,6 +13,7 @@ import kotlin.collections.ArrayList
 
 class ScoreboardActivity : AppCompatActivity() {
     class User(var name: String, var Email: String, var password: String)
+
     private lateinit var auth: FirebaseAuth
 
     var arraylist: ArrayList<User>? = null
@@ -27,11 +26,18 @@ class ScoreboardActivity : AppCompatActivity() {
         var textView = findViewById<TextView>(R.id.showUser)
         var datebaseRef = FirebaseDatabase.getInstance().getReference("User")
         var database = FirebaseDatabase.getInstance().reference.child("User") //create path
+        var backBtn = findViewById<ImageView>(R.id.backInfomation)
 
-        var getdata = object : ValueEventListener{
+        backBtn.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        var getdata = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var sb = StringBuilder()
-                for(i in snapshot.children) {
+                for (i in snapshot.children) {
                     var usernamedb = i.child("name").getValue()
                     var emaildb = i.child("email").getValue()
                     var passworddb = i.child("password").getValue()
@@ -39,19 +45,17 @@ class ScoreboardActivity : AppCompatActivity() {
                     var count = 0
 
 
-                    sb.append( " $usernamedb  "+"                          $scoredb\n")
+                    sb.append(" $usernamedb  " + "                          $scoredb\n")
                 }
                 textView.setText(sb)
             }
-            override fun onCancelled(error: DatabaseError) {
 
+            override fun onCancelled(error: DatabaseError) {
                 //Toast.makeText(this,"showtext"+name.toString(),Toast.LENGTH_LONG).show()
             }
 
         }
         database.addValueEventListener(getdata)
-
-
 
     }
 }
