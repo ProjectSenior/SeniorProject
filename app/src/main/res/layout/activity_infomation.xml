@@ -107,8 +107,8 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="เวลา"
         android:fontFamily="@font/kanit_light"
+        android:text="วันที่/เวลา"
 
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
@@ -122,33 +122,33 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/kanit_light"
         android:shadowColor="@color/black"
         android:text="ความชื้นในดิน"
-        android:fontFamily="@font/kanit_light"
 
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
         app:layout_constraintEnd_toEndOf="@+id/view6"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.397"
         app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toTopOf="@+id/view6"
         app:layout_constraintVertical_bias="0.037" />
 
+
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="53dp"
+        android:layout_height="25dp"
+        android:fontFamily="@font/kanit_light"
         android:text="อุณหภูมิภายนอก"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
         app:layout_constraintEnd_toEndOf="@+id/view6"
-        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toTopOf="@+id/view6"
-        android:fontFamily="@font/kanit_light"
 
         app:layout_constraintVertical_bias="0.037" />
-
 
     <TextView
         android:id="@+id/textView19"
@@ -161,8 +161,8 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ความชื้นภายนอก"
         android:fontFamily="@font/kanit_light"
+        android:text="ความชื้นภายนอก"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/view6"
         app:layout_constraintEnd_toEndOf="@+id/view6"
