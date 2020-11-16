@@ -8,20 +8,22 @@
 
     <TextView
         android:id="@+id/showUser"
-        android:layout_width="234dp"
-        android:layout_height="221dp"
+        android:layout_width="263dp"
+        android:layout_height="245dp"
         android:fontFamily="@font/kanit_light"
         android:text="สกอร์บอร์ด"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="22dp"
-        android:translationZ="100dp"
+        android:textSize="24dp"
 
+        android:textStyle="bold"
+        android:translationZ="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerView"
-        app:layout_constraintVertical_bias="0.392" />
+        app:layout_constraintVertical_bias="0.406" />
 
     <View
         android:id="@+id/headerView"
@@ -31,11 +33,22 @@
         android:padding="16dp"
         app:cornerRadius="100dp"
 
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backScoreboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow" />
 
     <View
         android:id="@+id/view12"
@@ -62,15 +75,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/backInfomation"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        app:srcCompat="@drawable/ic_arrow" />
-
     <View
         android:id="@+id/view2"
         android:layout_width="375dp"
@@ -93,14 +97,14 @@
         android:fontFamily="@font/kanit_light"
         android:text="ชื่อ"
         android:textColor="@color/black"
-        android:textSize="22dp"
+        android:textSize="24dp"
         android:translationZ="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHorizontal_bias="0.304"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/textView13"
@@ -109,12 +113,35 @@
         android:fontFamily="@font/kanit_light"
         android:text="คะแนน"
         android:textColor="@color/black"
-        android:textSize="22dp"
+        android:textSize="24dp"
         android:translationZ="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintHorizontal_bias="0.784"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252" />
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:translationZ="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:srcCompat="@drawable/ic_team" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:translationZ="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:srcCompat="@drawable/ic_scorepoint" />
 </androidx.constraintlayout.widget.ConstraintLayout>

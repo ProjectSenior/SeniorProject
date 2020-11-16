@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -16,16 +17,22 @@ class MainActivity : AppCompatActivity() {
     private lateinit var text_input: String
     private lateinit var text_password: String
     private lateinit var auth: FirebaseAuth
+    //for create animation
+    lateinit var scaleUp: Animation;
+    lateinit var scaleDown: Animation;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
+        scaleUp = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_up)
+        scaleDown = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_down)
 
         var btnLogin = findViewById<Button>(R.id.btnLogin)
         var signup = findViewById<TextView>(R.id.signUp)
 
         btnLogin.setOnClickListener {
+            btnLogin.startAnimation(scaleDown)
             doLogin()
         }
 

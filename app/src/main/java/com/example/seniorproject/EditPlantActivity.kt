@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.view.View
+import android.view.animation.Animation
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.net.toFile
@@ -35,6 +36,9 @@ class EditPlantActivity : AppCompatActivity() {
     var downloadUri: String = ""
     var file: File? = null
     var formatDate = SimpleDateFormat("dd MMMM YYYY")
+    //for create animation
+    lateinit var scaleUp: Animation;
+    lateinit var scaleDown: Animation;
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +47,8 @@ class EditPlantActivity : AppCompatActivity() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         userId = currentUser?.getUid()
         auth = FirebaseAuth.getInstance()
+        scaleUp = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_up)
+        scaleDown = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_down)
         var database = FirebaseDatabase.getInstance().reference.child("Plant").child(userId.toString())
         var getDatabase = FirebaseDatabase.getInstance().getReference("Plant").child(userId.toString())
         var chooseFile = findViewById<Button>(R.id.chooseBtn)
@@ -103,9 +109,11 @@ class EditPlantActivity : AppCompatActivity() {
         database.addValueEventListener(getImage)
 
         chooseFile.setOnClickListener {
+            chooseFile.startAnimation(scaleDown)
             filechooser()
         }
         upload.setOnClickListener {
+            upload.startAnimation(scaleDown)
             uploadFile()
             val intent = Intent(this, PlantActivity::class.java)
             startActivity(intent)
@@ -114,7 +122,7 @@ class EditPlantActivity : AppCompatActivity() {
         //go back to dashboard
         var btnBackToDashboard = findViewById<View>(R.id.backEditprofile)
         btnBackToDashboard.setOnClickListener {
-
+            btnBackToDashboard.startAnimation(scaleDown)
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
@@ -140,7 +148,7 @@ class EditPlantActivity : AppCompatActivity() {
             imageRef.putFile(filepath)
                     .addOnSuccessListener { p0 ->
                         pd.dismiss()
-                        Toast.makeText(applicationContext, "File Upload", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Upload Successfully", Toast.LENGTH_LONG).show()
                     }
                     .addOnFailureListener { p0 ->
                         pd.dismiss()
