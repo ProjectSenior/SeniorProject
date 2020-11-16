@@ -37,15 +37,15 @@ class EditPlantActivity : AppCompatActivity() {
     var file: File? = null
     var formatDate = SimpleDateFormat("dd MMMM YYYY")
     //for create animation
-    lateinit var scaleUp: Animation;
-    lateinit var scaleDown: Animation;
+    lateinit var scaleUp: Animation
+    lateinit var scaleDown: Animation
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_plant)
         val currentUser = FirebaseAuth.getInstance().currentUser
-        userId = currentUser?.getUid()
+        userId = currentUser?.uid
         auth = FirebaseAuth.getInstance()
         scaleUp = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_up)
         scaleDown = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_down)
@@ -68,19 +68,20 @@ class EditPlantActivity : AppCompatActivity() {
 
         showTextCalender.setOnClickListener{
 
-            val datepicker = DatePickerDialog(this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,DatePickerDialog.OnDateSetListener{
-                datePicker, i, i2, i3 -> val selectDate = Calendar.getInstance()
-                selectDate.set(Calendar.YEAR,i)
-                selectDate.set(Calendar.MONTH,i2)
-                selectDate.set(Calendar.DAY_OF_MONTH,i3)
-                if (selectDate ==null){
-                    showTextCalender.setText("กดเพื่อเลือกวันที่")
-                }
-                else{
+            val datepicker = DatePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+                val selectDate = Calendar.getInstance()
+                selectDate.set(Calendar.YEAR, i)
+                selectDate.set(Calendar.MONTH, i2)
+                selectDate.set(Calendar.DAY_OF_MONTH, i3)
+                if (selectDate == null) {
+                    showTextCalender.text = "กดเพื่อเลือกวันที่"
+                    println("ออกมา")
+                } else {
                     val date = formatDate.format(selectDate.time)
-                showTextCalender.setText(date)
+                    showTextCalender.text = date
+                    println("not com")
                 }
-            },today.get(Calendar.YEAR),today.get(Calendar.MONTH),today.get(Calendar.DAY_OF_MONTH))
+            }, today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH))
             datepicker.show()
 
         }
@@ -96,11 +97,11 @@ class EditPlantActivity : AppCompatActivity() {
                 var imageRef = FirebaseStorage.getInstance().reference.child("images/" + userId + ".jpg")
                 if (getdataName == null && getdataDate == null && getdataAnno == null) {
                     editNamePlant.setText("")
-                    showTextCalender.setText("กดเพื่อเลือกวันที่")
+                    showTextCalender.text = "กดเพื่อเลือกวันที่"
                     editAnno.setText("")
                 } else {
                     editNamePlant.setText(getdataName.toString())
-                    showTextCalender.setText(getdataDate.toString())
+                    showTextCalender.text = getdataDate.toString()
                     editAnno.setText(getdataAnno.toString())
                 }
             }
@@ -165,7 +166,7 @@ class EditPlantActivity : AppCompatActivity() {
             println(imageRef.downloadUrl.toString())
 
 
-            val uploadTask = imageRef.putFile(filepath!!)
+            val uploadTask = imageRef.putFile(filepath)
             val urlTask = uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
                     task.exception?.let {
@@ -194,8 +195,8 @@ class EditPlantActivity : AppCompatActivity() {
     private fun filechooser() {
 
         var i = Intent()
-        i.setType("image/*")
-        i.setAction(Intent.ACTION_GET_CONTENT)
+        i.type = "image/*"
+        i.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(i, "Choose PHOTO"), 111)
     }
 
