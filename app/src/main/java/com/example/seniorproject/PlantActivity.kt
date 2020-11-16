@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.view.animation.Animation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,10 @@ class PlantActivity : AppCompatActivity() {
     lateinit var reff: DatabaseReference
     lateinit var filePath: Uri
     var curFile: Uri? = null
+    //for create animation
+    lateinit var scaleUp: Animation;
+    lateinit var scaleDown: Animation;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant)
@@ -35,12 +40,15 @@ class PlantActivity : AppCompatActivity() {
         var namePlant = findViewById<TextView>(R.id.plantnameText)
         var dateofPlant = findViewById<TextView>(R.id.dateofplant)
         var infoAnnotationText = findViewById<TextView>(R.id.infoanno)
+        scaleUp = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_up)
+        scaleDown = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_down)
         //var storageRef = FirebaseStorage.getInstance("images/").reference
 
 
         //go back to dashboard
         var btnBackToDashboard = findViewById<View>(R.id.backPlant)
         btnBackToDashboard.setOnClickListener {
+            btnBackToDashboard.startAnimation(scaleDown)
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
