@@ -94,10 +94,11 @@ class WateringActivity : AppCompatActivity() {
                         statusCheck=false;
                         databaseInfo.child("currentDateLimit").setValue(formatted)
                     }
-                    else if(dateCheck.toString()==formatted && statusCheck){
+                    else if(dateCheck.toString()==formatted || statusCheck){
                         val mAlertDialog = AlertDialog.Builder(this@WateringActivity)
+                        println("test False!!!!!!")
                         mAlertDialog.setTitle("คะแนน")
-                        mAlertDialog.setMessage("คุณได้รับคะแนนไปแล้ว ")
+                        mAlertDialog.setMessage("วันนี้คุณได้รับคะแนนไปแล้ว ")
                         mAlertDialog.setIcon(R.mipmap.ic_leaf)
                         mAlertDialog.show()
                     }
