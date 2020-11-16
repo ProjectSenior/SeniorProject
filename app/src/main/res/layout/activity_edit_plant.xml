@@ -197,19 +197,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerView" />
 
-    <Button
-        android:id="@+id/calenderText"
-        android:layout_width="184dp"
-        android:layout_height="42dp"
-        android:text="กดเพื่อเลือกวันที่"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619" />
+    <TextView
+        android:id="@+id/showCalen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="กดเพื่อเลือกวันที่Calen"
+        android:textColor="@color/black"
+        android:translationZ="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dateplantview"
+        app:layout_constraintEnd_toEndOf="@+id/dateplantview"
+        app:layout_constraintStart_toStartOf="@+id/dateplantview"
+        app:layout_constraintTop_toTopOf="@+id/dateplantview"
+        app:layout_constraintVertical_bias="0.71" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

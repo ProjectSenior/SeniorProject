@@ -53,27 +53,30 @@ class EditPlantActivity : AppCompatActivity() {
         var namePlant = editNamePlant.text.toString()
         //var dateStart = editDateStart.text.toString()
         var anno = editAnno.text.toString()
-        var calendarText = findViewById<Button>(R.id.calenderText)
+        //var calendarText = findViewById<Button>(R.id.calenderText)
         val today = Calendar.getInstance()
         val year = today.get(Calendar.YEAR)
         val month = today.get(Calendar.MONTH)
         val day = today.get(Calendar.DAY_OF_MONTH)
+        var showTextCalender = findViewById<TextView>(R.id.showCalen)
 
-        calendarText.setOnClickListener{
+        showTextCalender.setOnClickListener{
+
             val datepicker = DatePickerDialog(this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,DatePickerDialog.OnDateSetListener{
                 datePicker, i, i2, i3 -> val selectDate = Calendar.getInstance()
                 selectDate.set(Calendar.YEAR,i)
                 selectDate.set(Calendar.MONTH,i2)
                 selectDate.set(Calendar.DAY_OF_MONTH,i3)
-                val date = formatDate.format(selectDate.time)
-                calendarText.setText(date)
+                if (selectDate ==null){
+                    showTextCalender.setText("กดเพื่อเลือกวันที่")
+                }
+                else{
+                    val date = formatDate.format(selectDate.time)
+                showTextCalender.setText(date)
+                }
             },today.get(Calendar.YEAR),today.get(Calendar.MONTH),today.get(Calendar.DAY_OF_MONTH))
             datepicker.show()
-//            val dpd = DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, mYear,mMonth, mDay ->
-//                calendarText.setText(""+mDay+"/"+mMonth+"/"+mYear)},year,month,day)
-//            var text2 = formatDate.format()
-//            dpd.show()
-//            println(text2)
+
         }
 
         var getImage = object : ValueEventListener {
@@ -87,11 +90,11 @@ class EditPlantActivity : AppCompatActivity() {
                 var imageRef = FirebaseStorage.getInstance().reference.child("images/" + userId + ".jpg")
                 if (getdataName == null && getdataDate == null && getdataAnno == null) {
                     editNamePlant.setText("")
-                    calendarText.setText("")
+                    showTextCalender.setText("กดเพื่อเลือกวันที่")
                     editAnno.setText("")
                 } else {
                     editNamePlant.setText(getdataName.toString())
-                    calendarText.setText(getdataDate.toString())
+                    showTextCalender.setText(getdataDate.toString())
                     editAnno.setText(getdataAnno.toString())
                 }
             }
@@ -125,7 +128,7 @@ class EditPlantActivity : AppCompatActivity() {
     private fun uploadFile() {
         var database = FirebaseDatabase.getInstance().reference.child("Plant") //create path
         var editNamePlant = findViewById<EditText>(R.id.editNameplant)
-        var editDateStart = findViewById<Button>(R.id.calenderText)
+        var editDateStart = findViewById<TextView>(R.id.showCalen)
         var editAnno = findViewById<EditText>(R.id.editAnnotation)
         var namePlant = editNamePlant.text.toString()
         var dateStart = editDateStart.text.toString()

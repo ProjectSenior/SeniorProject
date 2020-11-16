@@ -2,12 +2,12 @@ package com.example.seniorproject
 
 class IotInfo {
     var temp = ""
+    var humidity = ""
     var moisture = ""
-    var tempOutSide = ""
-    constructor(temp: String, moisture: String, tempOutSide: String) {
+    constructor(temp: String, moisture: String, humidity: String) {
         this.temp = temp
         this.moisture = moisture
-        this.tempOutSide = tempOutSide
+        this.humidity = humidity
     }
 
 
