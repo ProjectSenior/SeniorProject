@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/kanit_light"
-        android:text="กดเพื่อรดน้ำ"
+        android:text="กดสุ่มคะแนน"
         android:textSize="16sp"
         android:translationZ="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/view3"

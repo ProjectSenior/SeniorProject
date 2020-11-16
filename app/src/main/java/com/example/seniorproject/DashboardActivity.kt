@@ -1,11 +1,13 @@
 package com.example.seniorproject
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -13,7 +15,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
-import kotlin.random.Random
 
 class DashboardActivity : AppCompatActivity() {
     private var userId: String? = null
@@ -23,6 +24,9 @@ class DashboardActivity : AppCompatActivity() {
     lateinit var scaleUp: Animation;
     lateinit var scaleDown: Animation;
 
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
