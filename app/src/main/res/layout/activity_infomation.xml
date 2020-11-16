@@ -86,8 +86,10 @@
         android:layout_height="230dp"
         android:background="@color/white"
         android:elevation="10dp"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="304dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5" />
 
     <ImageView
         android:id="@+id/imageView9"

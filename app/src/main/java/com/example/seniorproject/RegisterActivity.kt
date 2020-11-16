@@ -61,6 +61,7 @@ class RegisterActivity : AppCompatActivity() {
                         datebase.child("User").child(userUid.toString())
                                 .setValue(User(registerUsername.text.toString(), registerEmail.text.toString(), registerPassword.text.toString(), 0))
                         datebase.child("Information").child(userUid.toString()).setValue(IotInfo("","",""))
+                        datebase.child("Plant").child(userUid.toString()).setValue(PlantInfo("","","","","","","",""))
                         // user!!.sendEmailVerification()
                         // .addOnCompleteListener { task ->
                         // if (task.isSuccessful) {

@@ -180,7 +180,7 @@ class EditPlantActivity : AppCompatActivity() {
                     println("Download = this " + downloadUri)
                     println(downloadUri)
                     println("///////")
-                    database.child(userId.toString()).setValue(PlantInfo(namePlant, dateStart, anno, downloadUri,"","",""))
+                    database.child(userId.toString()).setValue(PlantInfo(namePlant, dateStart, anno, downloadUri,"","","",""))
 
 
                 } else {
