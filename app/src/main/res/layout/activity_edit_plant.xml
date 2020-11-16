@@ -203,7 +203,7 @@
         android:layout_height="wrap_content"
         android:text="กดเพื่อเลือกวันที่Calen"
         android:textColor="@color/black"
-        android:translationZ="6dp"
+        android:translationZ="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/dateplantview"
         app:layout_constraintEnd_toEndOf="@+id/dateplantview"
         app:layout_constraintStart_toStartOf="@+id/dateplantview"

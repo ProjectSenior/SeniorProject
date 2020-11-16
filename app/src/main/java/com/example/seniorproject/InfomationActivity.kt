@@ -59,16 +59,21 @@ class InfomationActivity : AppCompatActivity() {
                     var tempdb = i.child("temp").getValue()
                     var datedb = i.child("Date").getValue()
                     val words = datedb.toString().trim()
-                    numberOfInputWords = words.length
-                    checknum=0
-                    tabspace=""
-                    for( i in numberOfInputWords until 25){
-                        tabspace = tabspace+" "
-                        checknum+=1
+                    if (words == null){
+                        textView.setText(" ")
                     }
-                    sb.append("$datedb " +tabspace+"$moisturedb"+tabspace +"                $tempdb"+tabspace+"                $humiditydb\n")
+                    else {
+                        numberOfInputWords = words.length
+                        checknum = 0
+                        tabspace = ""
+                        for (i in numberOfInputWords until 26) {
+                            tabspace = tabspace + "-"
+                            checknum += 1
+                        }
+                        sb.append("$datedb " + tabspace + "$moisturedb" + tabspace + "$tempdb" + tabspace + "$humiditydb\n")
 //                    sb.append(" $usernamedb  " + "                          $scoredb\n")
-                }
+                    }
+                    }
                 textView.setText(sb)
             }
 
