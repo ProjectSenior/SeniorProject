@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
+import com.github.mikephil.charting.charts.LineChart
 
 class InfomationActivity : AppCompatActivity() {
 
@@ -16,6 +17,9 @@ class InfomationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infomation)
 
+        var volumeReportChart = findViewById<LineChart>(R.id.reportingChart)
+        volumeReportChart.setTouchEnabled(true);
+        volumeReportChart.setPinchZoom(true);
 
         scaleUp = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_up)
         scaleDown = android.view.animation.AnimationUtils.loadAnimation(this,R.anim.scale_down)

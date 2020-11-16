@@ -201,10 +201,10 @@
         android:id="@+id/soilmoistureInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
         android:layout_marginTop="64dp"
-        android:text="0 %"
+        android:text="0 "
         android:textSize="20sp"
         android:translationZ="20dp"
         app:layout_constraintStart_toStartOf="@+id/view3"
@@ -219,7 +219,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="95dp"
         android:layout_marginRight="95dp"
-        android:text="0 c."
+        android:text="0 "
         android:textSize="20sp"
         android:translationZ="20dp"
         app:layout_constraintEnd_toStartOf="@+id/moistureInput"
@@ -227,13 +227,29 @@
         app:layout_constraintTop_toTopOf="@+id/view3" />
 
     <TextView
+        android:id="@+id/percern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:layout_marginLeft="95dp"
+        android:text="c. "
+        android:textSize="20sp"
+        android:translationZ="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toEndOf="@+id/soilmoistureInput"
+        app:layout_constraintTop_toTopOf="@+id/view3"
+        app:layout_constraintVertical_bias="0.198" />
+
+    <TextView
         android:id="@+id/moistureInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:text="0 %"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:text="0"
         android:textSize="20sp"
         android:translationZ="20dp"
         app:layout_constraintEnd_toEndOf="@+id/view3"
@@ -250,4 +266,32 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:srcCompat="@drawable/ic_leaf" />
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="20sp"
+        android:translationZ="20dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3"
+        app:layout_constraintVertical_bias="0.198" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="20sp"
+        android:translationZ="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3"
+        app:layout_constraintVertical_bias="0.198" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,11 +47,11 @@
         android:id="@+id/view6"
         android:layout_width="290dp"
         android:layout_height="274dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="136dp"
         android:background="@drawable/round_bg_grey"
         android:fontFamily="@font/kanit_light"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view5" />
 
@@ -59,11 +59,11 @@
         android:id="@+id/view8"
         android:layout_width="280dp"
         android:layout_height="135dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="224dp"
         android:background="@drawable/round_bg_grey"
         android:fontFamily="@font/kanit_light"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.575"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view6" />
 
@@ -73,11 +73,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="164dp"
         app:layout_constraintEnd_toStartOf="@+id/view6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view5"
         app:srcCompat="@drawable/ic_calendar" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/reportingChart"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/white"
+        android:elevation="10dp"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="304dp" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -87,9 +97,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="270dp"
+        android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view8"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_reminder" />
 
