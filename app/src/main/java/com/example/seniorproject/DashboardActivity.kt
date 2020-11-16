@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import com.google.firebase.auth.FirebaseAuth
@@ -21,9 +22,8 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     //for create animation
-    lateinit var scaleUp: Animation;
-    lateinit var scaleDown: Animation;
-
+    lateinit var scaleUp: Animation
+    lateinit var scaleDown: Animation
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -37,7 +37,7 @@ class DashboardActivity : AppCompatActivity() {
         val user = auth.currentUser?.uid
 
         var database = FirebaseDatabase.getInstance().reference.child("Plant").child(user.toString())
-
+        var showName =findViewById<TextView>(R.id.showNamePlant)
         //go to Watering page
         var btnWatering = findViewById<View>(R.id.btnWatering)
         btnWatering.setOnClickListener {
@@ -86,12 +86,18 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //getImage
+        //getImage and name
         var imageShow = findViewById<ImageView>(R.id.getImageView)
         var getImage = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var getdata = snapshot.child("imageUrl").value
                 Picasso.get().load(getdata.toString().toUri()).into(imageShow)
+                var getname = snapshot.child("plantName").value
+                if (getname == null) {
+                    showName.setText(" ")
+                } else {
+                    showName.setText(getname.toString())
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
