@@ -270,6 +270,7 @@
         android:textColor="#FFFFFF"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
@@ -321,18 +322,19 @@
 
     <TextView
         android:id="@+id/showNamePlant"
-        android:layout_width="112dp"
-        android:layout_height="43dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:translationZ="50dp"
+        android:layout_width="162dp"
+        android:layout_height="40dp"
         android:fontFamily="@font/kanit_light"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:translationZ="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getImageView"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.038" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

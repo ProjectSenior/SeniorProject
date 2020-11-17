@@ -2,6 +2,7 @@ package com.example.seniorproject
 
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -98,7 +99,7 @@ class WateringActivity : AppCompatActivity() {
                         val mAlertDialog = AlertDialog.Builder(this@WateringActivity)
                         println("test False!!!!!!")
                         mAlertDialog.setTitle("คะแนน")
-                        mAlertDialog.setMessage("วันนี้คุณได้รับคะแนนไปแล้ว ")
+                        mAlertDialog.setMessage("การสุ่มไม่ตรงเงื่อนไข หรือ วันนี้คุณได้รับคะแนนไปแล้ว \n"+"--> สามารถสุ่มอีกครั้งได้ในวันพรุ่งนี้\n\n"+"หมายเหตุ : สิทธิในการสุ่มคือต้องมีความชื้นในดินมากกว่า 40%\n"+"    สามารถสุ่มได้เพียงวันละ 1 ครั้งเท่านั้น")
                         mAlertDialog.setIcon(R.mipmap.ic_leaf)
                         mAlertDialog.show()
                     }
